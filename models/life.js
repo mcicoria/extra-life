@@ -10,6 +10,7 @@ var Life = function(){
     that.age = 0;
     that.maxAge = 1;
 
+    //Public methods
     that.step = function(){
 
         var neighbors = 0, nextAge = [], row = [];
@@ -17,7 +18,7 @@ var Life = function(){
 
             for(var x = 0; x < that.matrix[y].length; x++){
 
-                neighbors = that.countNeighbors(parseInt(x),parseInt(y));
+                neighbors = _countNeighbors(parseInt(x),parseInt(y));
 
                 if(neighbors == 3){
                     row.push(LIFE);
@@ -34,19 +35,6 @@ var Life = function(){
 
         that.matrix = nextAge;
         that.age++;
-    };
-
-
-    //Tests adjacent cells
-    that.countNeighbors = function(x, y){
-        var count = 0;
-
-        if(that.getCell(x+1, y) == 1) count++;
-        if(that.getCell(x-1, y) == 1) count++;
-        if(that.getCell(x, y+1) == 1) count++;
-        if(that.getCell(x, y-1) == 1) count++;
-
-        return count;
     };
 
     that.display = function(){
@@ -75,10 +63,23 @@ var Life = function(){
         that.display();
     };
 
-    that.getCell = function(x, y) {
 
-        if(x < 0) x = that.getNegativeCell(x, that.width);
-        if(y < 0) y = that.getNegativeCell(y, that.height);
+    //Private methods
+    var _countNeighbors = function(x, y){
+        var count = 0;
+
+        if(_getCell(x+1, y) == 1) count++;
+        if(_getCell(x-1, y) == 1) count++;
+        if(_getCell(x, y+1) == 1) count++;
+        if(_getCell(x, y-1) == 1) count++;
+
+        return count;
+    };
+
+    var _getCell = function(x, y) {
+
+        if(x < 0) x = _getNegativeCell(x, that.width);
+        if(y < 0) y = _getNegativeCell(y, that.height);
 
         if(x > that.width-1) x = x%that.width;
         if(y > that.height-1) y = y%that.height;
@@ -86,7 +87,7 @@ var Life = function(){
         return that.matrix[y][x];
     };
 
-    that.getNegativeCell = function(val, max) {
+    var _getNegativeCell = function(val, max) {
         var x = val;
 
         x = max - ((-1 * x) % max)
