@@ -50,7 +50,6 @@ var Life = function(){
     };
 
     that.display = function(){
-        var row = "";
         for(var i in that.matrix) { 
             console.log(that.matrix[i].toString().replace(/,/gi," "));
         }
