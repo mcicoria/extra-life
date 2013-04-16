@@ -34,5 +34,5 @@ var readGameData = function(data) {
 };
 
 var runGame = function() {
-    game.runLife(true);
+    game.runLife();
 };
