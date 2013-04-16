@@ -73,6 +73,12 @@ var Life = function(){
         if(_getCell(x, y+1) == 1) count++;
         if(_getCell(x, y-1) == 1) count++;
 
+        //Check the diagonals :)
+        if(_getCell(x+1, y+1) == 1) count++;
+        if(_getCell(x-1, y+1) == 1) count++;
+        if(_getCell(x+1, y-1) == 1) count++;
+        if(_getCell(x-1, y-1) == 1) count++;
+
         return count;
     };
 
