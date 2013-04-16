@@ -68,16 +68,16 @@ var Life = function(){
     var _countNeighbors = function(x, y){
         var count = 0;
 
-        if(_getCell(x+1, y) == 1) count++;
-        if(_getCell(x-1, y) == 1) count++;
-        if(_getCell(x, y+1) == 1) count++;
-        if(_getCell(x, y-1) == 1) count++;
+        if(_getCell(x+1, y) == LIFE) count++;
+        if(_getCell(x-1, y) == LIFE) count++;
+        if(_getCell(x, y+1) == LIFE) count++;
+        if(_getCell(x, y-1) == LIFE) count++;
 
         //Check the diagonals :)
-        if(_getCell(x+1, y+1) == 1) count++;
-        if(_getCell(x-1, y+1) == 1) count++;
-        if(_getCell(x+1, y-1) == 1) count++;
-        if(_getCell(x-1, y-1) == 1) count++;
+        if(_getCell(x+1, y+1) == LIFE) count++;
+        if(_getCell(x-1, y+1) == LIFE) count++;
+        if(_getCell(x+1, y-1) == LIFE) count++;
+        if(_getCell(x-1, y-1) == LIFE) count++;
 
         return count;
     };
